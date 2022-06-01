@@ -55,8 +55,7 @@ public class BookRestController {
 
     @PatchMapping(path = "/{id}", consumes = "application/json-patch+json")
     public BookReadDto patchById(@PathVariable Long id, @RequestBody JsonPatch patch) {
-        return bookService.patch(id, patch)
-            .orElseThrow(() -> new ResourceNotFoundException("No book with ID = " + id));
+        return bookService.patch(id, patch);
     }
 
     @DeleteMapping("/{id}")
@@ -76,7 +75,6 @@ public class BookRestController {
     @GetMapping("/contains-word-or-costs-more-than")
     public List<BookTitlePriceDto> findBooksContainingWordOrCostsMoreThan(@RequestParam String word,
         @RequestParam Integer price) {
-        System.out.println("/contains-word-or-costs-more-than");
         if (word.length() == 0) {
             throw new ParameterFormatException("Parameter word cannot be empty.");
         }

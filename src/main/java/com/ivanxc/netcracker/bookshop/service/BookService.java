@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class BookService {
 
     private final BookRepository bookRepository;
@@ -60,7 +60,7 @@ public class BookService {
     }
 
     @Transactional
-    public Optional<BookReadDto> patch(long id, JsonPatch patch) throws JsonConvertationException {
+    public BookReadDto patch(long id, JsonPatch patch) throws JsonConvertationException {
         BookCreateEditDto bookCreateEditDto = bookRepository.findById(id)
             .map(bookCreateEditMapper::map)
             .orElseThrow(() -> new ResourceNotFoundException("No book with ID = " + id));
@@ -73,7 +73,7 @@ public class BookService {
             throw new JsonConvertationException(e.getMessage());
         }
 
-        return update(id, bookCreateEditDto);
+        return update(id, bookCreateEditDto).get();
     }
 
     @Transactional
