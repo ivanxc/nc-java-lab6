@@ -33,15 +33,16 @@ public class BookCreateEditMapper implements Mapper<BookCreateEditDto, Book> {
         );
     }
 
+    @Override
+    public Book map(BookCreateEditDto from, Book to) {
+        copy(from, to);
+        return to;
+    }
+
     private void copy(BookCreateEditDto from, Book to) {
         to.setTitle(from.getTitle());
         to.setPrice(from.getPrice());
         to.setRepo(from.getRepo());
         to.setQuantity(from.getQuantity());
-    }
-
-    public Book map(BookCreateEditDto from, Book to) {
-        copy(from, to);
-        return to;
     }
 }
