@@ -12,9 +12,6 @@ import com.ivanxc.netcracker.bookshop.dto.PurchaseDateQuantityCustomerSurnameDis
 import com.ivanxc.netcracker.bookshop.dto.PurchaseIdDateCustomerSurnameDto;
 import com.ivanxc.netcracker.bookshop.dto.PurchaseQuantityBookTitlePriceRepoDto;
 import com.ivanxc.netcracker.bookshop.dto.PurchaseReadDto;
-import com.ivanxc.netcracker.bookshop.dto.ShopCreateEditDto;
-import com.ivanxc.netcracker.bookshop.dto.ShopReadDto;
-import com.ivanxc.netcracker.bookshop.entity.Shop;
 import com.ivanxc.netcracker.bookshop.exception.JsonConvertationException;
 import com.ivanxc.netcracker.bookshop.mapper.PurchaseCreateEditMapper;
 import com.ivanxc.netcracker.bookshop.mapper.PurchaseReadMapper;
