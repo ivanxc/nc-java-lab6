@@ -90,7 +90,7 @@ public class PurchaseService {
             }).orElse(false);
     }
 
-    public List<Timestamp> findDistinctMonths() {
+    public List<Timestamp> findDistinctDates() {
         return purchaseRepository.findDistinctDates();
     }
 
