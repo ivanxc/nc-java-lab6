@@ -32,7 +32,7 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 
     @Query("select"
         + " p.id as purchaseId, p.date as purchaseDate,"
-        + " c.surname as customerSurmame"
+        + " c.surname as customerSurname"
         + " from Purchase p "
         + " join p.customer c"
         + " where p.totalPrice > :total")

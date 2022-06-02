@@ -103,7 +103,7 @@ public class PurchaseService {
         return purchaseRepository.findDateQuantityDiscountSurnameTitle();
     }
 
-    List<PurchaseIdDateCustomerSurnameDto>
+    public List<PurchaseIdDateCustomerSurnameDto>
     findPurchasesIdDateCustomerSurnameWhereTotalPriceMoreThan(float total) {
         return purchaseRepository.findPurchasesIdDateCustomerSurnameWhereTotalPriceMoreThan(total);
     }
