@@ -31,24 +31,24 @@ public class CustomerRestController {
     private final CustomerService customerService;
 
     @GetMapping
-    List<CustomerReadDto> findAll() {
+    public List<CustomerReadDto> findAll() {
         return customerService.findAll();
     }
 
     @GetMapping("/{id}")
-    CustomerReadDto findById(@PathVariable Long id) {
+    public CustomerReadDto findById(@PathVariable Long id) {
         return customerService.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("No customer with ID = " + id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    CustomerReadDto create(@RequestBody CustomerCreateEditDto customer) {
+    public CustomerReadDto create(@RequestBody CustomerCreateEditDto customer) {
         return customerService.create(customer);
     }
 
     @PutMapping("/{id}")
-    CustomerReadDto updateById(@PathVariable Long id, @RequestBody CustomerCreateEditDto customer) {
+    public CustomerReadDto updateById(@PathVariable Long id, @RequestBody CustomerCreateEditDto customer) {
         return customerService.update(id, customer)
             .orElseThrow(() -> new ResourceNotFoundException("No customer with ID = " + id));
     }
@@ -59,7 +59,7 @@ public class CustomerRestController {
     }
 
     @DeleteMapping("/{id}")
-    DeleteResponse delete(@PathVariable Long id) {
+    public DeleteResponse delete(@PathVariable Long id) {
         if (customerService.delete(id)) {
             return new DeleteResponse("Customer with ID = " + id + " was deleted");
         } else {
@@ -68,7 +68,7 @@ public class CustomerRestController {
     }
 
     @GetMapping("/districts/distinct")
-    List<String> findDistinctDistricts() {
+    public List<String> findDistinctDistricts() {
         return customerService.findDistinctDistricts();
     }
 

@@ -8,14 +8,10 @@ import com.ivanxc.netcracker.bookshop.dto.PurchaseDateQuantityCustomerSurnameDis
 import com.ivanxc.netcracker.bookshop.dto.PurchaseIdDateCustomerSurnameDto;
 import com.ivanxc.netcracker.bookshop.dto.PurchaseQuantityBookTitlePriceRepoDto;
 import com.ivanxc.netcracker.bookshop.dto.PurchaseReadDto;
-import com.ivanxc.netcracker.bookshop.dto.ShopCreateEditDto;
-import com.ivanxc.netcracker.bookshop.dto.ShopReadDto;
-import com.ivanxc.netcracker.bookshop.entity.Shop;
 import com.ivanxc.netcracker.bookshop.exception.ParameterFormatException;
 import com.ivanxc.netcracker.bookshop.exception.ResourceNotFoundException;
 import com.ivanxc.netcracker.bookshop.response.DeleteResponse;
 import com.ivanxc.netcracker.bookshop.service.PurchaseService;
-import com.ivanxc.netcracker.bookshop.service.ShopService;
 import java.sql.Timestamp;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +24,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 

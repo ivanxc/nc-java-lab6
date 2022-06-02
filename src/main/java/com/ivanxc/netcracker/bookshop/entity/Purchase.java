@@ -1,7 +1,6 @@
 package com.ivanxc.netcracker.bookshop.entity;
 
 import java.sql.Timestamp;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

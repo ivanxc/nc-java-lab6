@@ -1,9 +1,6 @@
 package com.ivanxc.netcracker.bookshop.controller;
 
 import com.github.fge.jsonpatch.JsonPatch;
-import com.ivanxc.netcracker.bookshop.dto.CustomerCreateEditDto;
-import com.ivanxc.netcracker.bookshop.dto.CustomerReadDto;
-import com.ivanxc.netcracker.bookshop.dto.CustomerSurnameDiscountDto;
 import com.ivanxc.netcracker.bookshop.dto.ShopCreateEditDto;
 import com.ivanxc.netcracker.bookshop.dto.ShopReadDto;
 import com.ivanxc.netcracker.bookshop.entity.Shop;
@@ -34,24 +31,24 @@ public class ShopRestController {
     private final ShopService shopService;
 
     @GetMapping
-    List<ShopReadDto> findAll() {
+    public List<ShopReadDto> findAll() {
         return shopService.findAll();
     }
 
     @GetMapping("/{id}")
-    ShopReadDto findById(@PathVariable Long id) {
+    public ShopReadDto findById(@PathVariable Long id) {
         return shopService.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("No shop with ID = " + id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    ShopReadDto create(@RequestBody ShopCreateEditDto shop) {
+    public ShopReadDto create(@RequestBody ShopCreateEditDto shop) {
         return shopService.create(shop);
     }
 
     @PutMapping("/{id}")
-    ShopReadDto updateById(@PathVariable Long id, @RequestBody ShopCreateEditDto shop) {
+    public ShopReadDto updateById(@PathVariable Long id, @RequestBody ShopCreateEditDto shop) {
         return shopService.update(id, shop)
             .orElseThrow(() -> new ResourceNotFoundException("No shop with ID = " + id));
     }
@@ -62,7 +59,7 @@ public class ShopRestController {
     }
 
     @DeleteMapping("/{id}")
-    DeleteResponse delete(@PathVariable Long id) {
+    public DeleteResponse delete(@PathVariable Long id) {
         if (shopService.delete(id)) {
             return new DeleteResponse("Shop with ID = " + id + " was deleted");
         } else {
@@ -71,7 +68,7 @@ public class ShopRestController {
     }
 
     @GetMapping("/names-in-districts")
-    List<String> findShopsNameOfDistricts(@RequestParam String[] districts) {
+    public List<String> findShopsNameOfDistricts(@RequestParam String[] districts) {
         return shopService.findShopsNameOfDistricts(districts);
     }
 

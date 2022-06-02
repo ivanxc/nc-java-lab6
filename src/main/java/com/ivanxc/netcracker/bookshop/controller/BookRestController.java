@@ -31,24 +31,24 @@ public class BookRestController {
     private final BookService bookService;
 
     @GetMapping
-    List<BookReadDto> findAll() {
+    public List<BookReadDto> findAll() {
         return bookService.findAll();
     }
 
     @GetMapping("/{id}")
-    BookReadDto findById(@PathVariable Long id) {
+    public BookReadDto findById(@PathVariable Long id) {
         return bookService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No book with ID = " + id));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    BookReadDto create(@RequestBody BookCreateEditDto book) {
+    public BookReadDto create(@RequestBody BookCreateEditDto book) {
         return bookService.create(book);
     }
 
     @PutMapping("/{id}")
-    BookReadDto updateById(@PathVariable Long id, @RequestBody BookCreateEditDto book) {
+    public BookReadDto updateById(@PathVariable Long id, @RequestBody BookCreateEditDto book) {
         return bookService.update(id, book)
                     .orElseThrow(() -> new ResourceNotFoundException("No book with ID = " + id));
     }
@@ -59,7 +59,7 @@ public class BookRestController {
     }
 
     @DeleteMapping("/{id}")
-    DeleteResponse delete(@PathVariable Long id) {
+    public DeleteResponse delete(@PathVariable Long id) {
         if (bookService.delete(id)) {
             return new DeleteResponse("Book with ID = " + id + " was deleted");
         } else {
@@ -68,7 +68,7 @@ public class BookRestController {
     }
 
     @GetMapping("/distinct-titles-and-prices")
-    List<BookTitlePriceDto> findDistinctTitlesAndPrices() {
+    public List<BookTitlePriceDto> findDistinctTitlesAndPrices() {
         return bookService.findDistinctTitlesAndPrices();
     }
 
