@@ -107,7 +107,7 @@ public class PurchaseRestController {
             Timestamp timestamp = Timestamp.valueOf(date);
             return purchaseService.findPurchasesInCustomerDistrictAfter(timestamp);
         } catch (IllegalArgumentException e) {
-            throw new ParameterFormatException("Parameter excludedDistrict doesn't "
+            throw new ParameterFormatException("Parameter date doesn't "
                 + "match pattern yyyy-[m]m-[d]d hh:mm:ss[.f...].");
         }
     }
