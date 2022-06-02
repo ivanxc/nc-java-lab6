@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 
     @Query("select distinct p.date from Purchase p")
-    List<Timestamp> findDistinctMonths();
+    List<Timestamp> findDistinctDates();
 
     @Query("select c.surname as customerSurname, s.name as shopName from Purchase p"
         + " join p.customer c"

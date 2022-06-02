@@ -78,7 +78,7 @@ class PurchaseRepositoryTest extends IntegrationTestBase {
         repository.save(purchase2);
         repository.save(purchase3);
 
-        List<Timestamp> actual = repository.findDistinctMonths();
+        List<Timestamp> actual = repository.findDistinctDates();
 
         List<Timestamp> distinctTimestamps =
             List.of(purchase1.getDate(), purchase3.getDate());
