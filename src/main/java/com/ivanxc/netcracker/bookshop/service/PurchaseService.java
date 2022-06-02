@@ -13,6 +13,7 @@ import com.ivanxc.netcracker.bookshop.dto.PurchaseIdDateCustomerSurnameDto;
 import com.ivanxc.netcracker.bookshop.dto.PurchaseQuantityBookTitlePriceRepoDto;
 import com.ivanxc.netcracker.bookshop.dto.PurchaseReadDto;
 import com.ivanxc.netcracker.bookshop.exception.JsonConvertationException;
+import com.ivanxc.netcracker.bookshop.exception.ParameterFormatException;
 import com.ivanxc.netcracker.bookshop.mapper.PurchaseCreateEditMapper;
 import com.ivanxc.netcracker.bookshop.mapper.PurchaseReadMapper;
 import com.ivanxc.netcracker.bookshop.repository.PurchaseRepository;
@@ -57,10 +58,15 @@ public class PurchaseService {
 
     @Transactional
     public Optional<PurchaseReadDto> update(long id, PurchaseCreateEditDto purchaseDto) {
-        return purchaseRepository.findById(id)
-            .map(entity -> purchaseCreateEditMapper.map(purchaseDto, entity))
-            .map(purchaseRepository::saveAndFlush)
-            .map(purchaseReadMapper::map);
+        // try-catch вместо валидации..
+        try {
+            return purchaseRepository.findById(id)
+                .map(entity -> purchaseCreateEditMapper.map(purchaseDto, entity))
+                .map(purchaseRepository::saveAndFlush)
+                .map(purchaseReadMapper::map);
+        } catch (NullPointerException e) {
+            throw new ParameterFormatException("Passed not existing value");
+        }
     }
 
     @Transactional
