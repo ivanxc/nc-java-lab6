@@ -57,7 +57,6 @@ public class PurchaseCreateEditMapper implements Mapper<PurchaseCreateEditDto, P
     }
 
     private void copy(PurchaseCreateEditDto from, Purchase to) {
-        to.setId(from.getBookId());
         to.setDate(from.getDate());
         to.setShop(getShop(from.getShopId()));
         to.setCustomer(getCustomer(from.getCustomerId()));
